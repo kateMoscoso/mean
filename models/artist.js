@@ -2,14 +2,11 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var UserSchema = Schema({
+var ArtistSchema = Schema({
     name: String,
-    surname: String,
-    email: String,
-    password: String,
-    role: String,
+    description: String,
     image: String
 });
 
 //import the element
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Artist', ArtistSchema);
