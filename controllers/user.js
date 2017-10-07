@@ -1,5 +1,7 @@
 'use strict'
 
+var fs = require('fs');
+var path = require('path');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
 var jwt = require('../services/jwt');
@@ -64,7 +66,7 @@ function loginUser(req, res) {
                 //Check password
                 bcrypt.compare(password, user.password, function(err, check) {
                     if (check) {
-                        if (params.gethashs) {
+                        if (params.gethash) {
                             res.status(200).send({ token: jwt.createToken(user) });
                         } else {
                             res.status(200).send({ user });
@@ -99,8 +101,9 @@ function uploadImage(req, res) {
     var userId = req.params.id;
     var file_name = 'no subido';
     if (req.files) {
-        var file_path = req.file.image.path;
-        var file_split = file_path.split('\\');
+
+        var file_path = req.files.image.path;
+        var file_split = file_path.split('/');
         var file_name = file_split[2];
 
         var ext_split = file_name.split('\.');
@@ -121,11 +124,23 @@ function uploadImage(req, res) {
         } else {
             res.status(200).send({ message: 'Extension del archvo no valida' });
         }
-        console.log(file_path);
+
     } else {
         res.status(200).send({ message: 'No has subido ningun imagen' });
 
     }
+}
+
+function getImageFile(req, res) {
+    var imageFile = req.params.imageFile;
+    var path_file = './uploads/users/' + imageFile;
+    fs.exists(path_file, function(exists) {
+        if (exists) {
+            res.sendFile(path.resolve(path_file));
+        } else {
+            res.status(200).send({ message: 'File does not exist' });
+        }
+    });
 }
 
 
@@ -136,5 +151,6 @@ module.exports = {
     saveUser,
     loginUser,
     updateUser,
-    uploadImage
+    uploadImage,
+    getImageFile
 };
