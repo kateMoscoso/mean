@@ -126,7 +126,7 @@ function uploadImage(req, res) {
         }
 
     } else {
-        res.status(200).send({ message: 'No has subido ningun imagen' });
+        res.status(200).send({ message: 'File extension must be .png, .jpg or gif' });
 
     }
 }
