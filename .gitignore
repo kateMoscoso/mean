@@ -2,3 +2,4 @@ node_modules
 uploads/users
 uploads/artists
 uploads/albums
+npm-debug.log
