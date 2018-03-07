@@ -17,7 +17,7 @@
             <span *ngIf="!email.valid && email.touched">Email es obligatorio</span>
         </p>
         <div class="image_for_edit" *ngIf="user.image && user.image != 'null'">
-            <input src="{{url + 'get-image-user/' +user.image}}" styles="width:50px;" />
+            <img src="{{url + 'get-image-user/' +user.image}}" />
         </div>
         <p>
             <label>Sube tu foto</label>

@@ -17,16 +17,17 @@
     </nav>
     <nav id="user_logged">
         <div class="user-image">
-            <img id="image-logged" src="{{url + 'get-image-user/' +identity.image}}" styles="width:50px;" />
+            <img id="image-logged" src="{{url + 'get-image-user/' +identity.image}}" />
         </div>
-        <span>
-            {{identity.name}} {{identity.surname}}
+        <span id="identity_name">
+            {{identity.name}}
         </span>
-        <span class="btn btn-warning" (click)="logout()">
-        Logout
-    </span>
+
         <a [routerLink]="['/mis-datos']">
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Mis datos
+        </a>
+        <a (click)="logout()" class="btn-logout">
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout
         </a>
     </nav>
 
