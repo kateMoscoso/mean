@@ -1,7 +1,7 @@
 'use strict'
 var mongoose = require('mongoose');
 var app = require('./app');
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3977;
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/mean_db', (err, res) => {
     if (err) {

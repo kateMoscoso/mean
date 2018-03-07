@@ -10,13 +10,13 @@ npm install express --save
 localhost:3000
 
 
-Running : npm start
+**Running the api:** npm start
 
 https://cli.angular.io/
 
 npm install -g angular-cli
 
 ng new client-web
-
+**To start the web**
 ng serve
-localhost:4200
+localhost:4200 is where the web deploy
